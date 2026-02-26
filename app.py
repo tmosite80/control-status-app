@@ -3,7 +3,7 @@ import pandas as pd
 
 st.set_page_config(layout="wide")
 
-st.title("📊 Attendance")
+st.title("📊 Attendance Dashboard")
 
 # Simulación backend
 df = pd.DataFrame({
@@ -15,7 +15,9 @@ df = pd.DataFrame({
     "SUPERVISOR": ["Daniela","Daniela","Maria","Maria"]
 })
 
-# Filtros
+# ================================
+# FILTROS
+# ================================
 col1, col2 = st.columns(2)
 
 with col1:
@@ -26,15 +28,24 @@ with col1:
 with col2:
     fecha = st.selectbox("Fecha", df["DATE"].unique())
 
-# Filtrar datos según selección
+# ================================
+# FILTRADO
+# ================================
 if supervisor == "Todos":
     df_filtrado = df[df["DATE"] == fecha]
 else:
     df_filtrado = df[
-        (df["SUPERVISOR"] == supervisor) &
+        (df["SUPERVISOR"] == supervisor) & 
         (df["DATE"] == fecha)
     ]
 
+# Reordenar columnas
+column_order = ["ID", "NAME", "SUPERVISOR", "DATE", "HOUR", "STATUS"]
+df_filtrado = df_filtrado[column_order]
+
+# ================================
+# STATUS EDITABLE
+# ================================
 opciones_status = [
     "Showed Up",
     "NCNS",
@@ -55,5 +66,17 @@ df_editado = st.data_editor(
     use_container_width=True
 )
 
+# ================================
+# KPIs
+# ================================
+st.subheader("Resumen")
+
+col1, col2, col3 = st.columns(3)
+
+col1.metric("Showed Up", (df_editado["STATUS"] == "Showed Up").sum())
+col2.metric("NCNS", (df_editado["STATUS"] == "NCNS").sum())
+col3.metric("Medical Leave", (df_editado["STATUS"] == "Medical Leave").sum())
+
+# Mostrar tabla final
 st.dataframe(df_editado)
 
