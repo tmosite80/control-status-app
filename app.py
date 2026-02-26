@@ -3,7 +3,7 @@ import pandas as pd
 
 st.set_page_config(layout="wide")
 
-st.title("📊 Control de Status Hora a Hora")
+st.title("📊 Attendance")
 
 # Simulación backend
 df = pd.DataFrame({
@@ -19,17 +19,21 @@ df = pd.DataFrame({
 col1, col2 = st.columns(2)
 
 with col1:
-    supervisor = st.selectbox("Supervisor", df["SUPERVISOR"].unique())
+    supervisores = list(df["SUPERVISOR"].unique())
+    supervisores.insert(0, "Todos")
+    supervisor = st.selectbox("Supervisor", supervisores)
 
 with col2:
     fecha = st.selectbox("Fecha", df["DATE"].unique())
 
-df_filtrado = df[
-    (df["SUPERVISOR"] == supervisor) &
-    (df["DATE"] == fecha)
-]
-
-st.subheader("Editar STATUS")
+# Filtrar datos según selección
+if supervisor == "Todos":
+    df_filtrado = df[df["DATE"] == fecha]
+else:
+    df_filtrado = df[
+        (df["SUPERVISOR"] == supervisor) &
+        (df["DATE"] == fecha)
+    ]
 
 opciones_status = [
     "Showed Up",
@@ -52,3 +56,4 @@ df_editado = st.data_editor(
 )
 
 st.dataframe(df_editado)
+
