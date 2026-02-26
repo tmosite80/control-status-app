@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 
 st.set_page_config(layout="wide")
-
 st.title("📊 Attendance Dashboard")
 
 # Simulación backend
@@ -55,12 +54,6 @@ opciones_status = [
     "Abandonment"
 ]
 
-col1, col2, col3 = st.columns(3)
-
-col1.metric("Showed Up", (df_editado["STATUS"] == "Showed Up").sum())
-col2.metric("NCNS", (df_editado["STATUS"] == "NCNS").sum())
-col3.metric("Medical Leave", (df_editado["STATUS"] == "Medical Leave").sum())
-
 df_editado = st.data_editor(
     df_filtrado,
     column_config={
@@ -76,9 +69,7 @@ df_editado = st.data_editor(
 # KPIs
 # ================================
 st.subheader("Resumen")
-
-
-
-# Mostrar tabla final
-st.dataframe(df_editado)
-
+col1, col2, col3 = st.columns(3)
+col1.metric("Showed Up", (df_editado["STATUS"] == "Showed Up").sum())
+col2.metric("NCNS", (df_editado["STATUS"] == "NCNS").sum())
+col3.metric("Medical Leave", (df_editado["STATUS"] == "Medical Leave").sum())
