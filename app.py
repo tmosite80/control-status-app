@@ -54,7 +54,7 @@ col3.metric("Medical Leave", (df_filtrado["STATUS"] == "Medical Leave").sum())
 # ================================
 # GRÁFICO DE BARRAS POR HORA
 # ================================
-st.subheader("Conteo por Hora")
+#st.subheader("")
 conteo_horas = df_filtrado.groupby("HOUR").size()
 st.line_chart(conteo_horas)
 
