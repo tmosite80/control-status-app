@@ -9,7 +9,7 @@ df = pd.DataFrame({
     "ID": [101,102,103,104,105],
     "DATE": ["2026-02-25"]*5,
     "HOUR": ["13:00","14:00","15:00","16:00","15:00"],
-    "STATUS": ["","Showed Up","",""],
+    "STATUS": ["","Showed Up","","",""],
     "NAME": ["Juan","Ana","Luis","Maria","Nicolas"],
     "SUPERVISOR": ["Daniela","Daniela","Maria","Maria","millitos"]
 })
