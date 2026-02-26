@@ -45,7 +45,7 @@ df_filtrado = df_filtrado[column_order]
 # ================================
 # KPIs ARRIBA
 # ================================
-st.subheader("Resumen")
+#st.subheader("Resumen")
 col1, col2, col3 = st.columns(3)
 col1.metric("Showed Up", (df_filtrado["STATUS"] == "Showed Up").sum())
 col2.metric("NCNS", (df_filtrado["STATUS"] == "NCNS").sum())
