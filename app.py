@@ -52,6 +52,13 @@ col2.metric("NCNS", (df_filtrado["STATUS"] == "NCNS").sum())
 col3.metric("Medical Leave", (df_filtrado["STATUS"] == "Medical Leave").sum())
 
 # ================================
+# GRÁFICO DE BARRAS POR HORA
+# ================================
+st.subheader("Conteo por Hora")
+conteo_horas = df_filtrado.groupby("HOUR").size()
+st.bar_chart(conteo_horas)
+
+# ================================
 # TABLA EDITABLE
 # ================================
 opciones_status = [
