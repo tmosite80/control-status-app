@@ -2,12 +2,11 @@ import streamlit as st
 import pandas as pd
 
 st.set_page_config(layout="wide")
-
 st.title("📊 Attendance Dashboard")
 
 # Simulación backend
 df = pd.DataFrame({
-    "ID": [101,102,103,104],
+    "ID": [101, 102, 103, 104],
     "DATE": ["2026-02-25"]*4,
     "HOUR": ["13:00","14:00","15:00","16:00"],
     "STATUS": ["","Showed Up","",""],
@@ -15,9 +14,7 @@ df = pd.DataFrame({
     "SUPERVISOR": ["Daniela","Daniela","Maria","Maria"]
 })
 
-# ================================
-# FILTROS
-# ================================
+# Filtros
 col1, col2 = st.columns(2)
 
 with col1:
@@ -28,9 +25,7 @@ with col1:
 with col2:
     fecha = st.selectbox("Fecha", df["DATE"].unique())
 
-# ================================
-# FILTRADO
-# ================================
+# Filtrado
 if supervisor == "Todos":
     df_filtrado = df[df["DATE"] == fecha]
 else:
@@ -40,12 +35,10 @@ else:
     ]
 
 # Reordenar columnas
-column_order = ["NAME", "ID", "SUPERVISOR", "DATE", "HOUR", "STATUS"]
+column_order = ["ID", "NAME", "SUPERVISOR", "DATE", "HOUR", "STATUS"]
 df_filtrado = df_filtrado[column_order]
 
-# ================================
-# STATUS EDITABLE
-# ================================
+# Tabla editable
 opciones_status = [
     "Showed Up",
     "NCNS",
@@ -66,17 +59,9 @@ df_editado = st.data_editor(
     use_container_width=True
 )
 
-# ================================
-# KPIs
-# ================================
+# KPIs arriba
 st.subheader("Resumen")
-
 col1, col2, col3 = st.columns(3)
-
 col1.metric("Showed Up", (df_editado["STATUS"] == "Showed Up").sum())
 col2.metric("NCNS", (df_editado["STATUS"] == "NCNS").sum())
 col3.metric("Medical Leave", (df_editado["STATUS"] == "Medical Leave").sum())
-
-# Mostrar tabla final
-st.dataframe(df_editado)
-
