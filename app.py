@@ -43,7 +43,16 @@ column_order = ["NAME", "ID", "SUPERVISOR", "DATE", "HOUR", "STATUS"]
 df_filtrado = df_filtrado[column_order]
 
 # ================================
-# STATUS EDITABLE
+# KPIs ARRIBA
+# ================================
+st.subheader("Resumen")
+col1, col2, col3 = st.columns(3)
+col1.metric("Showed Up", (df_filtrado["STATUS"] == "Showed Up").sum())
+col2.metric("NCNS", (df_filtrado["STATUS"] == "NCNS").sum())
+col3.metric("Medical Leave", (df_filtrado["STATUS"] == "Medical Leave").sum())
+
+# ================================
+# TABLA EDITABLE
 # ================================
 opciones_status = [
     "Showed Up",
@@ -64,12 +73,3 @@ df_editado = st.data_editor(
     },
     use_container_width=True
 )
-
-# ================================
-# KPIs
-# ================================
-st.subheader("Resumen")
-col1, col2, col3 = st.columns(3)
-col1.metric("Showed Up", (df_editado["STATUS"] == "Showed Up").sum())
-col2.metric("NCNS", (df_editado["STATUS"] == "NCNS").sum())
-col3.metric("Medical Leave", (df_editado["STATUS"] == "Medical Leave").sum())
