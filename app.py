@@ -33,23 +33,23 @@ with col1:
     supervisor = st.selectbox("Supervisor", supervisores)
 
 with col2:
-    fecha = st.selectbox("Fecha", df["Date"].unique())
+    Selected_date = st.selectbox("Fecha", df["Date"].unique())
 
 with col3:
-    LOB = st.selectbox("LOB", df["LOB"].unique())
+    Selected_lob = st.selectbox("LOB", df["LOB"].unique())
 
 with col4:
-    SCHEDULED = st.selectbox("Sch", df["Status_x"].unique())
+    Selected_sch = st.selectbox("Sch", df["Status_x"].unique())
 
 # ================================
 # FILTRADO
 # ================================
 if supervisor == "Todos":
-    df_filtrado = df[df["Date"] == fecha]
+    df_filtrado = df[df["Date"] == Selected_date]
 else:
     df_filtrado = df[
         (df["Supervisor"] == supervisor) &
-        (df["Date"] == fecha)
+        (df["Date"] == Selected_date)
     ]
 
 # Reordenar columnas
