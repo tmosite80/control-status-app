@@ -39,10 +39,14 @@ with col2:
 
     
 with col3:
-    Selected_lob = st.selectbox("LOB", df["LOB"].unique())
+    Selected_lob = list(df["LOB"].unique())
+    Selected_lob.insert(0, "All")
+    Selected_lob = st.selectbox("LOB", Selected_lob)
 
 with col4:
-    Selected_sch = st.selectbox("Sch", df["Status_x"].unique())
+    Selected_sch = list("Sch", df["Status_x"].unique())
+    Selected_sch.insert(0, "All")
+    Selected_sch = st.selectbox("Status", Selected_sch)
 
 # ================================
 # FILTRADO
@@ -114,7 +118,7 @@ with table_container:
     )
 
 # ================================
-# KPIs ARRIBA
+# Conteo novedades
 # ================================
 with kpi_container:
     col1, col2, col3 = st.columns(3)
