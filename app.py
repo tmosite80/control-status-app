@@ -41,7 +41,6 @@ if "df_editado" not in st.session_state:
 # Contenedores para KPIs y tabla
 # ================================
 kpi_container = st.container()
-table_container = st.container()
 
 # ================================
 # FILTROS
