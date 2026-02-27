@@ -25,6 +25,14 @@ df = pd.DataFrame({
     "Latitud": ["-74.13265","-74.12842","-74.14382","-74.17222","-74.07612"]
 })
 
+
+# ================================
+# Inicializar STATUS en session_state
+# ================================
+if "df_editado" not in st.session_state:
+    df["STATUS"] = ""
+    st.session_state.df_editado = df.copy()
+
 # ================================
 # FILTROS
 # ================================
