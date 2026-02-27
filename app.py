@@ -50,16 +50,22 @@ with col4:
 
 df["STATUS"] = ""
 if supervisor == "Todos":
-    df_filtrado = df[df["Date"] == Selected_date]
+    if Selected_date == "All":
+        df_filtrado = df.copy()
+    else:
+        df_filtrado = df[df["Date"] == Selected_date]
 else:
-    df_filtrado = df[
-        (df["Supervisor"] == supervisor) &
-        (df["Date"] == Selected_date)
-    ]
+    if Selected_date == "All":
+        df_filtrado = df[df["Supervisor"] == supervisor]
+    else:
+        df_filtrado = df[
+            (df["Supervisor"] == supervisor) &
+            (df["Date"] == Selected_date)
+        ]
 
 # Reordenar columnas
 
-column_order = ["ID","Name","ID", "Supervisor", "Date", "Start", "End","STATUS"]
+column_order = ["ID","Name", "Supervisor", "Date", "Start", "End","STATUS"]
 df_filtrado = df_filtrado[column_order]
 
 # ================================
