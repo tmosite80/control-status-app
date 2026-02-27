@@ -33,8 +33,8 @@ with col1:
     supervisor = st.selectbox("Supervisor", supervisores)
 
 with col2:
-    Selected_date = st.selectbox("Fecha", df["Date"].unique())
-    Selected_date.insert(0, "Todos")
+    Selected_date = st.selectbox("Date", df["Date"].unique())
+    Selected_date.insert(0, "All")
     Selected_date = st.selectbox("Date", supervisores)
 
     
