@@ -25,7 +25,7 @@ df = pd.DataFrame({
 # ================================
 # FILTROS
 # ================================
-col1, col2, col3, col4 = st.columns(2)
+col1, col2, col3, col4 = st.columns(4)
 
 with col1:
     supervisores = list(df["Superviso"].unique())
