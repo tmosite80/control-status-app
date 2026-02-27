@@ -55,6 +55,23 @@ with col4:
 # FILTRADO
 # ================================
 
+
+if "df_editado" not in st.session_state:
+    df["STATUS"] = ""
+    st.session_state.df_editado = df.copy()
+
+# Mostrar tabla editable usando session_state
+st.session_state.df_editado = st.data_editor(
+    st.session_state.df_editado,
+    column_config={
+        "STATUS": st.column_config.SelectboxColumn(
+            "STATUS",
+            options=["Showed Up","NCNS","Medical Leave","Resignation","Day Off","Abandonment"]
+        )
+    },
+    use_container_width=True
+
+
 # Inicializar STATUS vacío
 df["STATUS"] = ""
 
