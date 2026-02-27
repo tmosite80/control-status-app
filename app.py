@@ -28,7 +28,7 @@ df = pd.DataFrame({
 col1, col2, col3, col4 = st.columns(4)
 
 with col1:
-    supervisores = list(df["Superviso"].unique())
+    supervisores = list(df["Supervisor"].unique())
     supervisores.insert(0, "Todos")
     supervisor = st.selectbox("Supervisor", supervisores)
 
