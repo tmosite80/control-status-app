@@ -53,7 +53,7 @@ else:
     ]
 
 # Reordenar columnas
-column_order = ["Name", "ID", "Supervisor", "Date", "Start", "End","STATUS"]
+column_order = ["Name", "ID", "Supervisor", "Date", "Start", "End"]
 df_filtrado = df_filtrado[column_order]
 
 # ================================
