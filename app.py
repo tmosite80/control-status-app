@@ -44,7 +44,7 @@ with col3:
     Selected_lob = st.selectbox("LOB", Selected_lob)
 
 with col4:
-    Selected_sch = list("Sch", df["Status_x"].unique())
+    Selected_sch = list(df["Status_x"].unique())
     Selected_sch.insert(0, "All")
     Selected_sch = st.selectbox("Status", Selected_sch)
 
@@ -52,20 +52,27 @@ with col4:
 # FILTRADO
 # ================================
 
+# Inicializar STATUS vacío
 df["STATUS"] = ""
-if supervisor == "Todos":
-    if Selected_date == "All":
-        df_filtrado = df.copy()
-    else:
-        df_filtrado = df[df["Date"] == Selected_date]
-else:
-    if Selected_date == "All":
-        df_filtrado = df[df["Supervisor"] == supervisor]
-    else:
-        df_filtrado = df[
-            (df["Supervisor"] == supervisor) &
-            (df["Date"] == Selected_date)
-        ]
+
+# Empezamos con todas las filas
+df_filtrado = df.copy()
+
+# Filtro Supervisor
+if supervisor != "Todos":
+    df_filtrado = df_filtrado[df_filtrado["Supervisor"] == supervisor]
+
+# Filtro Date
+if Selected_date != "All":
+    df_filtrado = df_filtrado[df_filtrado["Date"] == Selected_date]
+
+# Filtro LOB
+if Selected_lob != "All":
+    df_filtrado = df_filtrado[df_filtrado["LOB"] == Selected_lob]
+
+# Filtro Status_x
+if Selected_sch != "All":
+    df_filtrado = df_filtrado[df_filtrado["Status_x"] == Selected_sch]
 
 # Reordenar columnas
 
