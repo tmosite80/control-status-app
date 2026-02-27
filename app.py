@@ -73,9 +73,9 @@ df_filtrado = df_filtrado[column_order]
 # ================================
 #st.subheader("Resumen")
 col1, col2, col3 = st.columns(3)
-col1.metric("Showed Up", (df_filtrado["STATUS"] == "Showed Up").sum())
-col2.metric("NCNS", (df_filtrado["STATUS"] == "NCNS").sum())
-col3.metric("Medical Leave", (df_filtrado["STATUS"] == "Medical Leave").sum())
+col1.metric("Showed Up", (df_editado["STATUS"] == "Showed Up").sum())
+col2.metric("NCNS", (df_editado["STATUS"] == "NCNS").sum())
+col3.metric("Medical Leave", (df_editado["STATUS"] == "Medical Leave").sum())
 
 # ================================
 # GRÁFICO DE BARRAS POR HORA
