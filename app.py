@@ -70,6 +70,7 @@ st.session_state.df_editado = st.data_editor(
         )
     },
     use_container_width=True
+)
 
 
 # Inicializar STATUS vacío
