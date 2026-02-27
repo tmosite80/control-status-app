@@ -29,7 +29,7 @@ col1, col2, col3, col4 = st.columns(4)
 
 with col1:
     supervisores = list(df["Supervisor"].unique())
-    supervisores.insert(0, "Todos")
+    supervisores.insert(0, "All")
     supervisor = st.selectbox("Supervisor", supervisores)
 
 with col2:
@@ -59,7 +59,7 @@ df["STATUS"] = ""
 df_filtrado = df.copy()
 
 # Filtro Supervisor
-if supervisor != "Todos":
+if supervisor != "All":
     df_filtrado = df_filtrado[df_filtrado["Supervisor"] == supervisor]
 
 # Filtro Date
