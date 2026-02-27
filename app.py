@@ -48,7 +48,7 @@ if supervisor == "Todos":
     df_filtrado = df[df["Date"] == fecha]
 else:
     df_filtrado = df[
-        (df["SUPERVISOR"] == supervisor) &
+        (df["Supervisor"] == supervisor) &
         (df["Date"] == fecha)
     ]
 
