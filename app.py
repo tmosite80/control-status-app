@@ -41,7 +41,6 @@ if "df_editado" not in st.session_state:
 # Contenedores para KPIs y tabla
 # ================================
 kpi_container = st.container()
-table_container = st.container()
 
 # ================================
 # FILTROS
@@ -104,6 +103,7 @@ st.line_chart(conteo_horas)
 # Tabla editable (al final)
 # ================================
 opciones_status = ["Showed Up","NCNS","Medical Leave","Resignation","Day Off","Abandonment"]
+table_container = st.container()
 
 with table_container:
     st.session_state.df_editado.loc[df_filtrado.index] = st.data_editor(
