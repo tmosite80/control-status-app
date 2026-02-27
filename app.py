@@ -34,7 +34,10 @@ with col1:
 
 with col2:
     Selected_date = st.selectbox("Fecha", df["Date"].unique())
+    Selected_date.insert(0, "Todos")
+    Selected_date = st.selectbox("Date", supervisores)
 
+    
 with col3:
     Selected_lob = st.selectbox("LOB", df["LOB"].unique())
 
@@ -56,7 +59,7 @@ else:
 
 # Reordenar columnas
 
-column_order = ["Name", "ID", "Supervisor", "Date", "Start", "End","STATUS"]
+column_order = ["ID","Name","ID", "Supervisor", "Date", "Start", "End","STATUS"]
 df_filtrado = df_filtrado[column_order]
 
 # ================================
