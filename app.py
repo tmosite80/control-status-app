@@ -7,25 +7,39 @@ st.title("📊 Attendance Dashboard")
 # Simulación backend
 df = pd.DataFrame({
     "ID": [101,102,103,104,105],
-    "DATE": ["2026-02-25"]*5,
-    "HOUR": ["13:00","14:00","15:00","16:00","15:00"],
-    "STATUS": ["","Showed Up","","",""],
-    "NAME": ["Juan","Ana","Luis","Maria","Nicolas"],
-    "SUPERVISOR": ["Daniela","Daniela","Maria","Maria","millitos"]
+    "Date": ["2026-02-25","02/16/2026","02/16/2026","2026-02-26","2026-02-25"],
+    "Start": ["13:00","14:00","15:00","16:00","15:00"],
+    "End": ["18:00","19:00","20:00","00:00","03:00"],
+    "Status_x": ["Scheduled","Scheduled","Scheduled","Day Off","Day Off"],
+    "Name": ["Juan","Ana","Luis","Maria","Nicolas"],
+    "Status_y": ["Active"]*5,
+    "Role": ["Agent","Agent","Agent","Agent","Supervisor"],
+    "LOB": ["TMO Telesales Spanish","TMO Chats English","TMO Chats Spanish","TMO Chats Spanish","tmo"],
+    "Supervisor": ["Paulina Esther Zalabata Pantoja","Yulieth Alejandra Mur Barrios","Yulieth Alejandra Mur Barrios","Stefanny Ramirez Ramirez","Nicolas"],
+    "Phone Number": ["3124016489","3134230509","3012006087","3213752540","3112649520"],
+    "Address": ["Calle 4 #36-70","Carrera 157 # 132 - 41","Calle 6 sur #16A134 sur","Carrera 111A #152C - 15","carrera 57 b 75 c 09"],
+    "Longitud": ["4.68235","4.67179","4.75562","4.58491","4.59735"],
+    "Latitud": ["-74.13265","-74.12842","-74.14382","-74.17222","-74.07612"]
 })
 
 # ================================
 # FILTROS
 # ================================
-col1, col2 = st.columns(2)
+col1, col2, col3, col4 = st.columns(2)
 
 with col1:
-    supervisores = list(df["SUPERVISOR"].unique())
+    supervisores = list(df["Superviso"].unique())
     supervisores.insert(0, "Todos")
     supervisor = st.selectbox("Supervisor", supervisores)
 
 with col2:
-    fecha = st.selectbox("Fecha", df["DATE"].unique())
+    fecha = st.selectbox("Fecha", df["Date"].unique())
+
+with col3:
+    fecha = st.selectbox("LOB", df["LOB"].unique())
+
+with col4:
+    fecha = st.selectbox("Sch", df["Status_x"].unique())
 
 # ================================
 # FILTRADO
@@ -34,12 +48,12 @@ if supervisor == "Todos":
     df_filtrado = df[df["DATE"] == fecha]
 else:
     df_filtrado = df[
-        (df["SUPERVISOR"] == supervisor) & 
+        (df["SUPERVISOR"] == supervisor) &
         (df["DATE"] == fecha)
     ]
 
 # Reordenar columnas
-column_order = ["NAME", "ID", "SUPERVISOR", "DATE", "HOUR", "STATUS"]
+column_order = ["Name", "ID", "Supervisor", "Date", "Start", "End","STATUS"]
 df_filtrado = df_filtrado[column_order]
 
 # ================================
@@ -55,7 +69,7 @@ col3.metric("Medical Leave", (df_filtrado["STATUS"] == "Medical Leave").sum())
 # GRÁFICO DE BARRAS POR HORA
 # ================================
 #st.subheader("")
-conteo_horas = df_filtrado.groupby("HOUR").size()
+conteo_horas = df_filtrado.groupby("Start").size()
 st.line_chart(conteo_horas)
 
 # ================================
