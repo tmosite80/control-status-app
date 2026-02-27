@@ -36,10 +36,10 @@ with col2:
     fecha = st.selectbox("Fecha", df["Date"].unique())
 
 with col3:
-    fecha = st.selectbox("LOB", df["LOB"].unique())
+    LOB = st.selectbox("LOB", df["LOB"].unique())
 
 with col4:
-    fecha = st.selectbox("Sch", df["Status_x"].unique())
+    SCHEDULED = st.selectbox("Sch", df["Status_x"].unique())
 
 # ================================
 # FILTRADO
