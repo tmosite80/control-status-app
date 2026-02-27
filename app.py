@@ -71,13 +71,10 @@ df_filtrado = df_filtrado[column_order]
 
 
 # ================================
-# KPIs ARRIBA
+# RESUMEN
 # ================================
 #st.subheader("Resumen")
-col1, col2, col3 = st.columns(3)
-col1.metric("Showed Up", (df_editado["STATUS"] == "Showed Up").sum())
-col2.metric("NCNS", (df_editado["STATUS"] == "NCNS").sum())
-col3.metric("Medical Leave", (df_editado["STATUS"] == "Medical Leave").sum())
+kpi_container = st.container()  # Aquí pondremos los KPIs
 
 # ================================
 # GRÁFICO DE BARRAS POR HORA
@@ -85,6 +82,12 @@ col3.metric("Medical Leave", (df_editado["STATUS"] == "Medical Leave").sum())
 #st.subheader("")
 conteo_horas = df_filtrado.groupby("Start").size()
 st.line_chart(conteo_horas)
+
+# ================================
+# TABLA
+# ================================
+
+table_container = st.container()  # Aquí pondremos la tabla
 
 # ================================
 # TABLA EDITABLE
@@ -98,14 +101,23 @@ opciones_status = [
     "Abandonment"
 ]
 
-df_editado = st.data_editor(
-    df_filtrado,
-    column_config={
-        "STATUS": st.column_config.SelectboxColumn(
-            "STATUS",
-            options=opciones_status
-        )
-    },
-    use_container_width=True
-)
+with table_container:
+    df_editado = st.data_editor(
+        df_filtrado,
+        column_config={
+            "STATUS": st.column_config.SelectboxColumn(
+                "STATUS",
+                options=opciones_status
+            )
+        },
+        use_container_width=True
+    )
 
+# ================================
+# KPIs ARRIBA
+# ================================
+with kpi_container:
+    col1, col2, col3 = st.columns(3)
+    col1.metric("Showed Up", (df_editado["STATUS"] == "Showed Up").sum())
+    col2.metric("NCNS", (df_editado["STATUS"] == "NCNS").sum())
+    col3.metric("Medical Leave", (df_editado["STATUS"] == "Medical Leave").sum())
