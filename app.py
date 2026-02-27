@@ -35,7 +35,7 @@ with col1:
 with col2:
     Selected_date = list(df["Date"].unique())
     Selected_date.insert(0, "All")
-    Selected_date = st.selectbox("Date", supervisores)
+    Selected_date = st.selectbox("Date", Selected_date)
 
     
 with col3:
