@@ -45,11 +45,11 @@ with col4:
 # FILTRADO
 # ================================
 if supervisor == "Todos":
-    df_filtrado = df[df["DATE"] == fecha]
+    df_filtrado = df[df["Date"] == fecha]
 else:
     df_filtrado = df[
         (df["SUPERVISOR"] == supervisor) &
-        (df["DATE"] == fecha)
+        (df["Date"] == fecha)
     ]
 
 # Reordenar columnas
