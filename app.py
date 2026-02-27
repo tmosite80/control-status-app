@@ -2,7 +2,10 @@ import streamlit as st
 import pandas as pd
 
 st.set_page_config(layout="wide")
-st.title("📊 Attendance Dashboard")
+st.markdown(
+    "<h1 style='text-align: center;'>📊 Attendance Dashboard</h1>",
+    unsafe_allow_html=True
+)
 
 # Simulación backend
 df = pd.DataFrame({
