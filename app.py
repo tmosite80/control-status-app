@@ -69,22 +69,6 @@ column_order = ["ID","Name", "Supervisor", "Date", "Start", "End","STATUS"]
 df_filtrado = df_filtrado[column_order]
 
 # ================================
-# KPIs ARRIBA
-# ================================
-#st.subheader("Resumen")
-col1, col2, col3 = st.columns(3)
-col1.metric("Showed Up", (df_editado["STATUS"] == "Showed Up").sum())
-col2.metric("NCNS", (df_editado["STATUS"] == "NCNS").sum())
-col3.metric("Medical Leave", (df_editado["STATUS"] == "Medical Leave").sum())
-
-# ================================
-# GRÁFICO DE BARRAS POR HORA
-# ================================
-#st.subheader("")
-conteo_horas = df_filtrado.groupby("Start").size()
-st.line_chart(conteo_horas)
-
-# ================================
 # TABLA EDITABLE
 # ================================
 opciones_status = [
@@ -106,3 +90,20 @@ df_editado = st.data_editor(
     },
     use_container_width=True
 )
+
+# ================================
+# KPIs ARRIBA
+# ================================
+#st.subheader("Resumen")
+col1, col2, col3 = st.columns(3)
+col1.metric("Showed Up", (df_editado["STATUS"] == "Showed Up").sum())
+col2.metric("NCNS", (df_editado["STATUS"] == "NCNS").sum())
+col3.metric("Medical Leave", (df_editado["STATUS"] == "Medical Leave").sum())
+
+# ================================
+# GRÁFICO DE BARRAS POR HORA
+# ================================
+#st.subheader("")
+conteo_horas = df_filtrado.groupby("Start").size()
+st.line_chart(conteo_horas)
+
