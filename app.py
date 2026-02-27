@@ -44,6 +44,8 @@ with col4:
 # ================================
 # FILTRADO
 # ================================
+
+df["STATUS"] = ""
 if supervisor == "Todos":
     df_filtrado = df[df["Date"] == Selected_date]
 else:
@@ -54,7 +56,6 @@ else:
 
 # Reordenar columnas
 
-df["STATUS"] = ""
 column_order = ["Name", "ID", "Supervisor", "Date", "Start", "End","STATUS"]
 df_filtrado = df_filtrado[column_order]
 
