@@ -25,10 +25,9 @@ credentials_info = st.secrets["GOOGLE_CREDENTIALS_JSON"]
 
 scope = ["https://www.googleapis.com/auth/drive"]
 
-# Convierte el string JSON a diccionario
-credentials_info = json.loads(st.secrets["GOOGLE_CREDENTIALS_JSON"])
+# st.secrets["GOOGLE_CREDENTIALS"] ya es un dict
+credentials_info = st.secrets["GOOGLE_CREDENTIALS"]
 
-# Ahora funciona
 creds = Credentials.from_service_account_info(credentials_info, scopes=scope)
 
 client = gspread.authorize(creds)
