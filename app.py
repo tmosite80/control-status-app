@@ -16,7 +16,7 @@ st.set_page_config(layout="wide")
 # Título centrado
 # ================================
 st.markdown(
-    "<h1 style='text-align: center;'>📊 Attendance Dashboardsss</h1>",
+    "<h1 style='text-align: center;'>📊 Attendance Dashboard</h1>",
     unsafe_allow_html=True
 )
 
