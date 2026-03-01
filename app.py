@@ -7,10 +7,7 @@ import os
 import json
 
 
-# ================================
-# Configuración de la página
-# ================================
-st.set_page_config(layout="wide")
+
 
 # ================================
 # Título centrado
@@ -47,6 +44,10 @@ data = worksheet.get_all_records()
 
 df = pd.DataFrame(data)
 
+# ================================
+# Configuración de la página
+# ================================
+st.set_page_config(layout="wide")
 
 # ================================
 # Inicializar STATUS en session_state
