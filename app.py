@@ -52,7 +52,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-df = pd.DataFrame(data)
+df2 = pd.DataFrame(data)
 
 
 # ================================
