@@ -21,11 +21,6 @@ st.markdown(
 # Conexión a Google Sheets usando Secret
 # -------------------------------
 
-credentials_info = st.secrets["GOOGLE_CREDENTIALS_JSON"]
-
-scope = ["https://www.googleapis.com/auth/drive"]
-
-# st.secrets["GOOGLE_CREDENTIALS"] ya es un dict
 credentials_info = st.secrets["GOOGLE_CREDENTIALS"]
 
 creds = Credentials.from_service_account_info(credentials_info, scopes=scope)
