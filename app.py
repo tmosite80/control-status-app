@@ -21,8 +21,10 @@ st.markdown(
 # Conexión a Google Sheets usando Secret
 # -------------------------------
 
-credentials_info = st.secrets["GOOGLE_CREDENTIALS"]
+scope = ["https://www.googleapis.com/auth/drive"]
 
+
+credentials_info = st.secrets["GOOGLE_CREDENTIALS"]
 creds = Credentials.from_service_account_info(credentials_info, scopes=scope)
 
 client = gspread.authorize(creds)
