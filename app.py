@@ -21,7 +21,7 @@ st.markdown(
 # Data
 # ================================
 ATTENDANCE_SHEET_ID = "1qABgFnVHSI-yYBvy6Ppbm_DMWBnlhnov9q0QV3pdpFY"
-CREDENTIALS_FILE = "/content/control-status-app/control-status-app/control-status-app/control-status-app/credentials.json"
+CREDENTIALS_FILE = "/content/control-status-app/credentials.json"
 
 # --------------------------------------------------
 # CONEXIÓN A GOOGLE
