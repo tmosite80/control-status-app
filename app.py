@@ -1,5 +1,8 @@
 import streamlit as st
 import pandas as pd
+import gspread
+from google.oauth2.service_account import Credentials
+from datetime import datetime
 
 # ================================
 # Configuración de la página
@@ -15,20 +18,41 @@ st.markdown(
 )
 
 # ================================
-# Datos iniciales
+# Data
 # ================================
-df = pd.DataFrame({
-    "ID": [101,102,103,104,105],
-    "Date": ["2026-02-25","02/16/2026","02/16/2026","2026-02-26","2026-02-25"],
-    "Start": ["13:00","14:00","15:00","16:00","15:00"],
-    "End": ["18:00","19:00","20:00","00:00","03:00"],
-    "Status_x": ["Scheduled","Scheduled","Scheduled","Day Off","Day Off"],
-    "Name": ["Juan","Ana","Luis","Maria","Nicolas"],
-    "Role": ["Agent","Agent","Agent","Agent","Supervisor"],
-    "LOB": ["TMO Telesales Spanish","TMO Chats English","TMO Chats Spanish","TMO Chats Spanish","tmo"],
-    "Supervisor": ["Paulina Esther Zalabata Pantoja","Yulieth Alejandra Mur Barrios",
-                   "Yulieth Alejandra Mur Barrios","Stefanny Ramirez Ramirez","Nicolas"],
-})
+ATTENDANCE_SHEET_ID = "1qABgFnVHSI-yYBvy6Ppbm_DMWBnlhnov9q0QV3pdpFY"
+CREDENTIALS_FILE = "credentials.json"
+
+# --------------------------------------------------
+# CONEXIÓN A GOOGLE
+# --------------------------------------------------
+
+scope = [
+    "https://www.googleapis.com/auth/spreadsheets",
+    "https://www.googleapis.com/auth/drive"
+]
+
+creds = Credentials.from_service_account_file(
+    CREDENTIALS_FILE,
+    scopes=scope
+)
+
+client = gspread.authorize(creds)
+
+# --------------------------------------------------
+# ABRIR SHEET
+# --------------------------------------------------
+
+spreadsheet = client.open_by_key(ATTENDANCE_SHEET_ID)
+worksheet = spreadsheet.worksheet("python")
+
+# --------------------------------------------------
+# CARGAR DATA
+# --------------------------------------------------
+
+data = worksheet.get_all_records()
+df = pd.DataFrame(data)
+
 
 # ================================
 # Inicializar STATUS en session_state
@@ -100,7 +124,7 @@ conteo_horas = df_filtrado.groupby("Start").size()
 st.line_chart(conteo_horas)
 
 # ================================
-# Tabla editable (al final)
+# Tabla editable
 # ================================
 opciones_status = ["Showed Up","NCNS","Medical Leave","Resignation","Day Off","Abandonment"]
 table_container = st.container()
