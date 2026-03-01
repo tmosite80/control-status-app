@@ -17,40 +17,6 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# ================================
-# Data
-# ================================
-ATTENDANCE_SHEET_ID = "1qABgFnVHSI-yYBvy6Ppbm_DMWBnlhnov9q0QV3pdpFY"
-CREDENTIALS_FILE = "/content/credentials.json"  # Corrected path
-
-# --------------------------------------------------
-# CONEXIÓN A GOOGLE
-# --------------------------------------------------
-
-scope = [
-    "https://www.googleapis.com/auth/spreadsheets",
-    "https://www.googleapis.com/auth/drive"
-]
-
-creds = Credentials.from_service_account_file(
-    CREDENTIALS_FILE,
-    scopes=scope
-)
-
-client = gspread.authorize(creds)
-
-# --------------------------------------------------
-# ABRIR SHEET
-# --------------------------------------------------
-
-spreadsheet = client.open_by_key(ATTENDANCE_SHEET_ID)
-worksheet = spreadsheet.worksheet("python")
-
-# --------------------------------------------------
-# CARGAR DATA
-# --------------------------------------------------
-
-data = worksheet.get_all_records()
 df = pd.DataFrame(data)
 
 
