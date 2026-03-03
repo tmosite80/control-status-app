@@ -8,6 +8,23 @@ import json
 
 
 # ================================
+# Funciones
+# ================================
+
+def guardar_historico(df_actualizado, sheet):
+    # Convertir a lista de listas para gspread
+    rows = df_actualizado.values.tolist()
+    
+    # Opcional: agregar encabezados si la hoja está vacía
+    if sheet.row_count == 0:
+        sheet.append_row(df_actualizado.columns.tolist())
+    
+    # Append fila por fila
+    for row in rows:
+        sheet.append_row(row)
+
+
+# ================================
 # Título centrado
 # ================================
 st.markdown(
@@ -216,3 +233,14 @@ with table_container:
         },
         use_container_width=True
     )
+
+ATTENDANCE_SHEET_ID = "1qABgFnVHSI-yYBvy6Ppbm_DMWBnlhnov9q0QV3pdpFY"
+
+# Obtener o crear hoja historico
+try:
+    ATTENDANCE_SHEET_ID = spreadsheet.worksheet("historico")
+except gspread.WorksheetNotFound:
+    ATTENDANCE_SHEET_ID = spreadsheet.add_worksheet(title="historico", rows=1000, cols=20)
+
+# Guardar los cambios filtrados en historico
+guardar_historico(st.session_state.df_editado.loc[df_filtrado.index], ATTENDANCE_SHEET_ID)
