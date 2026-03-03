@@ -178,7 +178,30 @@ with kpi_container:
 # ================================
 # Gráfico de horas
 # ================================
-conteo_horas = df_filtrado.groupby("Start").size()
+
+df_filtrado["Start"] = pd.to_datetime(df_filtrado["Start"], format="%H:%M")
+df_filtrado["End"] = pd.to_datetime(df_filtrado["End"], format="%H:%M")
+
+horas = pd.date_range(
+    start=pd.Timestamp("1900-01-01 00:07"),
+    end=pd.Timestamp("1900-01-01 03:00"),
+    freq="H"
+)
+
+conteo_activos = []
+
+for hora in horas:
+    activos = df_filtrado[
+        (df_filtrado["Start"] <= hora) &
+        (df_filtrado["End"] > hora)
+    ].shape[0]
+    
+    conteo_activos.append(activos)
+
+# Crear serie final
+conteo_horas = pd.Series(conteo_activos, index=horas)
+
+# Graficar
 st.line_chart(conteo_horas)
 
 # ================================
