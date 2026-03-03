@@ -216,7 +216,7 @@ for hora in horas:
 conteo_horas = pd.Series(conteo_activos, index=horas)
 
 # Graficar
-st.area_chart(conteo_horas)
+st.line_chart(conteo_horas)
 
 # ================================
 # Tabla editable
