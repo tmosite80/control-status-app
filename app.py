@@ -189,7 +189,7 @@ for hora in horas:
     activos = df_filtrado[
         (df_filtrado["Start"] <= hora) &
         (df_filtrado["End"] > hora)
-    ].shape[0]
+    ].shape[1]
     
     conteo_activos.append(activos)
 
