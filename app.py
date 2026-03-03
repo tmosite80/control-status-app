@@ -125,7 +125,7 @@ with col2:
     if st.button("Reportes"):
         st.info("¡Aquí se ejecutaría tu script de Reportes!")
 
-with col2:
+with col3:
     if st.button("Hourly"):
         st.info("¡Aquí se ejecutaría tu script de Reportes!")
 
