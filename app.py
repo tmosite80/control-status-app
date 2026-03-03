@@ -115,6 +115,12 @@ df = pd.DataFrame(DATA)
 # ================================
 st.set_page_config(layout="wide")
 
+st.markdown("## ⚡ Ejecutar Acción")
+st.markdown("Presiona el botón para ejecutar un script o función:")
+
+if st.button("🚀 Ejecutar Script"):
+    st.info("¡Aquí se ejecutaría tu script!")
+
 # ================================
 # Inicializar STATUS en session_state
 # ================================
@@ -221,3 +227,4 @@ with table_container:
         },
         use_container_width=True
     )
+
