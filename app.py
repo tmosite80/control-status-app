@@ -177,9 +177,6 @@ with kpi_container:
 # Gráfico de horas
 # ================================
 
-df_filtrado["Start"] = pd.to_datetime(df_filtrado["Start"], format="%H:%M")
-df_filtrado["End"] = pd.to_datetime(df_filtrado["End"], format="%H:%M")
-
 # Crear rango de horas del día
 horas = pd.date_range("00:00", "23:00", freq="H")
 
