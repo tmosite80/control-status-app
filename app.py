@@ -115,10 +115,7 @@ df = pd.DataFrame(DATA)
 # ================================
 st.set_page_config(layout="wide")
 
-st.markdown("## ⚡ Ejecutar Acción")
-st.markdown("Presiona el botón para ejecutar un script o función:")
-
-if st.button("🚀 Ejecutar Script"):
+if st.button("Rutas"):
     st.info("¡Aquí se ejecutaría tu script!")
 
 # ================================
