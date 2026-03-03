@@ -115,7 +115,14 @@ df = pd.DataFrame(DATA)
 # ================================
 st.set_page_config(layout="wide")
 
+# ================================
+# Bottons
+# ================================
+
 if st.button("Rutas"):
+    st.info("¡Aquí se ejecutaría tu script!")
+
+if st.button("Reportes"):
     st.info("¡Aquí se ejecutaría tu script!")
 
 # ================================
