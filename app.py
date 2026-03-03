@@ -115,16 +115,15 @@ df = pd.DataFrame(DATA)
 # ================================
 st.set_page_config(layout="wide")
 
-# ================================
-# Bottons
-# ================================
+col1, col2 = st.columns(2)  # Crear dos columnas de igual ancho
 
-if st.button("Rutas"):
-    st.info("¡Aquí se ejecutaría tu script!")
+with col1:
+    if st.button("Rutas"):
+        st.info("¡Aquí se ejecutaría tu script de Rutas!")
 
-if st.button("Reportes"):
-    st.info("¡Aquí se ejecutaría tu script!")
-
+with col2:
+    if st.button("Reportes"):
+        st.info("¡Aquí se ejecutaría tu script de Reportes!")
 # ================================
 # Inicializar STATUS en session_state
 # ================================
