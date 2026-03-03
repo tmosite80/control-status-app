@@ -37,7 +37,7 @@ DATA = [
         "ID": 2,
         "Date": "2026-03-01",
         "Start": "",
-        "End": "",
+        "End": "18:00",
         "Status_x": "Absent",
         "Pipkins ID": "PK1002",
         "Name": "Ana Gómez",
