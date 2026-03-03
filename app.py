@@ -234,13 +234,17 @@ with table_container:
         use_container_width=True
     )
 
+# ATTENDANCE_SHEET_ID sigue siendo solo el ID
 ATTENDANCE_SHEET_ID = "1qABgFnVHSI-yYBvy6Ppbm_DMWBnlhnov9q0QV3pdpFY"
 
-# Obtener o crear hoja historico
+# Abrir el spreadsheet por ID
+spreadsheet = client.open_by_key(ATTENDANCE_SHEET_ID)
+
+# Obtener o crear la hoja "historico" dentro de este mismo spreadsheet
 try:
-    ATTENDANCE_SHEET_ID = spreadsheet.worksheet("historico")
+    historico_sheet = spreadsheet.worksheet("historico")
 except gspread.WorksheetNotFound:
-    ATTENDANCE_SHEET_ID = spreadsheet.add_worksheet(title="historico", rows=1000, cols=20)
+    historico_sheet = spreadsheet.add_worksheet(title="historico", rows=1000, cols=20)
 
 # Guardar los cambios filtrados en historico
-guardar_historico(st.session_state.df_editado.loc[df_filtrado.index], ATTENDANCE_SHEET_ID)
+guardar_historico(st.session_state.df_editado.loc[df_filtrado.index], historico_sheet)
