@@ -115,7 +115,7 @@ df = pd.DataFrame(DATA)
 # ================================
 st.set_page_config(layout="wide")
 
-col1, col2, col3 = st.columns(3) 
+col1, col2, col3 = st.columns([2,1,1]) 
 
 with col1:
     if st.button("Rutas"):
