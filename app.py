@@ -182,11 +182,8 @@ with kpi_container:
 df_filtrado["Start"] = pd.to_datetime(df_filtrado["Start"], format="%H:%M")
 df_filtrado["End"] = pd.to_datetime(df_filtrado["End"], format="%H:%M")
 
-horas = pd.date_range(
-    start=pd.Timestamp("1900-01-01 00:07"),
-    end=pd.Timestamp("1900-01-01 03:00"),
-    freq="H"
-)
+# Crear rango de horas del día
+horas = pd.date_range("00:00", "23:00", freq="H")
 
 conteo_activos = []
 
