@@ -55,7 +55,7 @@ DATA = [
     {
         "ID": 3,
         "Date": "2026-03-01",
-        "Start": "07:00",
+        "Start": "10:00",
         "End": "16:00",
         "Status_x": "Present",
         "Pipkins ID": "PK1003",
@@ -72,7 +72,7 @@ DATA = [
     {
         "ID": 4,
         "Date": "2026-03-01",
-        "Start": "10:00",
+        "Start": "11:00",
         "End": "19:00",
         "Status_x": "Late",
         "Pipkins ID": "PK1004",
@@ -90,7 +90,7 @@ DATA = [
         "ID": 5,
         "Date": "2026-03-01",
         "Start": "08:30",
-        "End": "17:30",
+        "End": "12:30",
         "Status_x": "Present",
         "Pipkins ID": "PK1005",
         "Name": "Pedro Sánchez",
