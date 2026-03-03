@@ -17,7 +17,95 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-df = pd.DataFrame(data)
+DATA = [
+    {
+        "ID": 1,
+        "Date": "2026-03-01",
+        "Start": "08:00",
+        "End": "17:00",
+        "Status_x": "Present",
+        "Pipkins ID": "PK1001",
+        "Name": "Juan Pérez",
+        "Status_y": "Active",
+        "Role": "Agent",
+        "LOB": "Sales",
+        "Supervisor": "María López",
+        "Phone Number": "555-1234",
+        "Address": "Av. Central 123",
+        "Longitud": -99.1332,
+        "Latitud": 19.4326
+    },
+    {
+        "ID": 2,
+        "Date": "2026-03-01",
+        "Start": "09:00",
+        "End": "18:00",
+        "Status_x": "Absent",
+        "Pipkins ID": "PK1002",
+        "Name": "Ana Gómez",
+        "Status_y": "Active",
+        "Role": "Agent",
+        "LOB": "Support",
+        "Supervisor": "Carlos Ruiz",
+        "Phone Number": "555-5678",
+        "Address": "Calle Norte 456",
+        "Longitud": -99.1400,
+        "Latitud": 19.4300
+    },
+    {
+        "ID": 3,
+        "Date": "2026-03-01",
+        "Start": "07:00",
+        "End": "16:00",
+        "Status_x": "Present",
+        "Pipkins ID": "PK1003",
+        "Name": "Luis Martínez",
+        "Status_y": "Inactive",
+        "Role": "Supervisor",
+        "LOB": "Sales",
+        "Supervisor": "N/A",
+        "Phone Number": "555-8765",
+        "Address": "Av. Sur 789",
+        "Longitud": -99.1200,
+        "Latitud": 19.4400
+    },
+    {
+        "ID": 4,
+        "Date": "2026-03-01",
+        "Start": "10:00",
+        "End": "19:00",
+        "Status_x": "Late",
+        "Pipkins ID": "PK1004",
+        "Name": "Sofía Ramírez",
+        "Status_y": "Active",
+        "Role": "Agent",
+        "LOB": "Retention",
+        "Supervisor": "María López",
+        "Phone Number": "555-3456",
+        "Address": "Calle Este 321",
+        "Longitud": -99.1500,
+        "Latitud": 19.4200
+    },
+    {
+        "ID": 5,
+        "Date": "2026-03-01",
+        "Start": "08:30",
+        "End": "17:30",
+        "Status_x": "Present",
+        "Pipkins ID": "PK1005",
+        "Name": "Pedro Sánchez",
+        "Status_y": "Active",
+        "Role": "Agent",
+        "LOB": "Support",
+        "Supervisor": "Carlos Ruiz",
+        "Phone Number": "555-6543",
+        "Address": "Av. Oeste 654",
+        "Longitud": -99.1100,
+        "Latitud": 19.4500
+    }
+]
+
+df = pd.DataFrame(DATA)
 
 # ================================
 # Configuración de la página
