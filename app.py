@@ -17,25 +17,6 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# -------------------------------
-# Conexión a Google Sheets usando Secret
-# -------------------------------
-
-scope = ["https://www.googleapis.com/auth/drive"]
-
-
-credentials_info = st.secrets["GOOGLE_CREDENTIALS"]
-creds = Credentials.from_service_account_info(credentials_info, scopes=scope)
-
-client = gspread.authorize(creds)
-
-# Abrir sheet
-ATTENDANCE_SHEET_ID = "1qABgFnVHSI-yYBvy6Ppbm_DMWBnlhnov9q0QV3pdpFY"
-spreadsheet = client.open_by_key(ATTENDANCE_SHEET_ID)
-worksheet = spreadsheet.worksheet("python")
-
-data = worksheet.get_all_records()
-
 df = pd.DataFrame(data)
 
 # ================================
